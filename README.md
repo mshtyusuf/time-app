@@ -1,20 +1,60 @@
 ## Overview
+
 Tache : Faire une application simple avec React et la présenter au CTO comme s'il était un DSI client.
 
-## Ameliorations qu'on peut ajouter
 Cahier des charges :
 
 + 2 champs de date et un bouton pour soumettre
 + Quand deux dates valides sont fournies, affichez en-dessous le nombre de jours entre ces deux dates
 
+
+## etapes d'instalation
+
+- Clonner la repository dès Git 
+- Ouvrir dans le repertoire (../time-app) une shell de commande (cmd, powershell ...) 
+    `npm install`  ou `npm install time-app`
+    (note : verifier si vous avez le node package manager installé `npm -v`, sinon suivis https://www.npmjs.com/get-npm)
+- Si tous les packages sont installés sans erreurs, fait :
+    `npm start`  ou `npm start time-app` pour lancer le serveur avec l'application
+- Au navigateur saisis  `localhost:3000`
+- Les fichier de code se trouvent sous time-app/src
+    + index.js (code commenté)
+    + index.css
+
+
+## Debuggage
+
+- [fixé] date fin est contenue dans l'intervale [date debut, )
+- [fixé] difference negative entre les deux dates.
+- [fixé] affichage successif du meme resultat dans l'historique.
+- [fixé] affichage du 'null' (pour les valeurs par defaut) dans l'historique.
+
 ## Ameliorations 
-- [Ajoutée] date fin est contenue dans l'intervale [date debut, )
-- [Ajoutée] une table d'historique, mais elle est volatile (suppression en rafraîchissant la page)
-- un checkbox Inclure le dernier jours dans le calcul (1 jour sera ajouté)
-- 
+
+- [Ajoutée] Une table d'historique, mais elle est volatile (suppression en rafraîchissant la page)
+
+- On precise encore en ajoutant le temps (hh:mm:ss) au dates. 
+
+- Un checkbox pour ne Compter que les jours de travail, ou donner la possibilite de choisir les jours à compter (en code que des conditions + calcules)
+
+- Afficher une liste de Taches a faire vide indexée par les jours entre les dates entrées.
+
+- Un checkbox Inclure le dernier jours dans le calcul (1 jour sera ajouté) - inspirée par https://www.timeanddate.com/date/duration.html
+
+- Transformer l'application en service API - inspirée par https://www.timeanddate.com/date/duration.html
+
+## Infos
+
+- Auteur : Mashate Youssef, Etudiant 3eme annee Business Intelligence, ENSIAS, Université Med V Rabat
+- Commencé le : 20/10/2018
+- Derniere modification : 10/28/2018
+- Licence : Publique
 
 
--------------------------------------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------    AUTO-GENERATED README   --------------------------------------------------------------------
 ## Standard React README.md
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
