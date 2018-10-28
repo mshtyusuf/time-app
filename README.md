@@ -10,14 +10,22 @@ Cahier des charges :
 
 ## etapes d'instalation
 
-- Clonner la repository dès Git 
+- Faire clone ou telecharger la repository dès Git 
+
 - Ouvrir dans le repertoire (../time-app) une shell de commande (cmd, powershell ...) 
+
     `npm install`  ou `npm install time-app`
+
     (note : verifier si vous avez le node package manager installé `npm -v`, sinon suivis https://www.npmjs.com/get-npm)
+
 - Si tous les packages sont installés sans erreurs, fait :
+
     `npm start`  ou `npm start time-app` pour lancer le serveur avec l'application
+
 - Au navigateur saisis  `localhost:3000`
+
 - Les fichier de code se trouvent sous time-app/src
+
     + index.js (code commenté)
     + index.css
 
@@ -41,7 +49,7 @@ Cahier des charges :
 
 - Un checkbox Inclure le dernier jours dans le calcul (1 jour sera ajouté) - inspirée par https://www.timeanddate.com/date/duration.html
 
-- Transformer l'application en service API - inspirée par https://www.timeanddate.com/date/duration.html
+- Transformer l'application en service API - inspirée par le meme
 
 ## Infos
 
