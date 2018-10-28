@@ -12,3 +12,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.form {
+  margin-top: 20px;
+
+  border-left: 1px solid black;
+}
+
+.table-wrapper-scroll-y {
+  display: block;
+  max-height: 200px;
+  overflow-y: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
