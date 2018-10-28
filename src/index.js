@@ -36,13 +36,19 @@ class App extends React.Component {
 
   //handler pour le button; calcule la difference et l'ajoute a l'historique
   handleSubmit = event => {
+    // les dates entrees
     var startDate = new Date(this.state.startDate);
     var endDate = new Date(this.state.endDate);
-    if (endDate - startDate < 0) alert("la date fin n'est pas valide");
+
+    // condition sur la difference, pas de difference negative
+    if (endDate - startDate < 0)
+      alert("la date fin n'est pas valide, verifier vous inputs.");
     else {
+      // affecte la difference au variable d'etat a afficher (setState() bind la valeur mais n'est pas instantané, je cherche encore pourquoi.)
       this.state.diffDuration = (endDate - startDate) / 86400000;
       this.setState({ diffDuration: this.state.diffDuration });
 
+      // conditions sur les dates pour l'ergonomie de l'affichage de l'historique
       if (
         this.state.startDate != "" &&
         this.state.endDate != "" &&
@@ -58,6 +64,8 @@ class App extends React.Component {
           " </td></tr>" +
           this.state.historique;
 
+        // historiquecontrol contienne la valeur du difference anterieur,
+        // nous servir a ne pas spammer l'affichage de l'historique (cliques successifs sur le button)
         this.setState({ historiquecontrol: this.state.diffDuration });
       }
     }
