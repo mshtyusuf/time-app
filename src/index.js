@@ -3,39 +3,67 @@ import ReactDOM from "react-dom";
 
 import "./index.css";
 
+// L'app class contient le calculateur du difference entre deux Date (comme inputs), en plus il affiche un historique
 class App extends React.Component {
   state = {
-    startDate: null,
-    timeEnd: null,
-    diffDuration: null,
-    historique: null
+    startDate: "",
+    endDate: "",
+    diffDuration: "",
+    historique: "",
+    dateControl: "",
+    historiquecontrol: {
+      oldStartDate: "",
+      oldEndDate: ""
+    }
   };
 
+  constructor(props) {
+    super(props);
+    //this.state.dateControl = document.querySelector('input[type="date"]');
+    this.state.dateControl = new Date().getDate();
+  }
+
+  // handler qui affect la valeur saisie du date debut au variable d'etat state.startDate
   handleChangetimeS = event => {
     this.setState({ startDate: event.target.value });
   };
 
+  // handler qui affect la valeur saisie du date fin au variable d'etat state.endDate
   handleChangetimeE = event => {
-    this.setState({ timeEnd: event.target.value });
+    this.setState({ endDate: event.target.value });
   };
+  //note : On peut combiner les deux handlechange en une seule fonction qui traite les setState selon le nom d'event
 
+  //handler pour le button; calcule la difference et l'ajoute a l'historique
   handleSubmit = event => {
     var startDate = new Date(this.state.startDate);
-    var endDate = new Date(this.state.timeEnd);
-    this.state.diffDuration = (endDate - startDate) / 86400000;
-    this.setState({ diffDuration: this.state.diffDuration });
+    var endDate = new Date(this.state.endDate);
+    if (endDate - startDate < 0) alert("la date fin n'est pas valide");
+    else {
+      this.state.diffDuration = (endDate - startDate) / 86400000;
+      this.setState({ diffDuration: this.state.diffDuration });
 
-    this.state.historique =
-      "<tr><td> " +
-      this.state.diffDuration +
-      " jours de " +
-      this.state.startDate +
-      " &agrave; " +
-      this.state.timeEnd +
-      "</td> </tr>" +
-      this.state.historique;
+      if (
+        this.state.startDate != "" &&
+        this.state.endDate != "" &&
+        this.state.historiquecontrol != this.state.diffDuration
+      ) {
+        this.state.historique =
+          "<tr> <td>" +
+          this.state.diffDuration +
+          " jours de " +
+          this.state.startDate +
+          " &agrave; " +
+          this.state.endDate +
+          " </td></tr>" +
+          this.state.historique;
+
+        this.setState({ historiquecontrol: this.state.diffDuration });
+      }
+    }
   };
 
+  // JSX (utilisant du bootstrap)
   render() {
     console.log("Diff : ", this.state.diffDuration);
     return (
@@ -48,9 +76,13 @@ class App extends React.Component {
                   Date debut :
                   <input
                     type="date"
+                    placeholder={new Date().getDate()}
                     class="form-control"
                     id="datepicker"
+                    default={this.state.dateControl.value}
                     onChange={this.handleChangetimeS}
+                    required
+                    pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
                   />
                 </label>
               </div>
@@ -61,7 +93,10 @@ class App extends React.Component {
                     type="date"
                     class="form-control"
                     id="datepicker"
+                    min={this.state.startDate}
                     onChange={this.handleChangetimeE}
+                    required
+                    pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
                   />
                 </label>
               </div>
@@ -84,12 +119,10 @@ class App extends React.Component {
           <div class="col-xs-offset-1 col-lg-5 table-wrapper-scroll-y  form">
             <p>Historique :</p>
             <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th />
-                </tr>
-              </thead>
+              <thead />
               <tbody
+                // n'est pas dangereux puisque l'input est controler (que des dates), mais ca peut construire une faille de sécurité
+                // A utiliser du Backend Dev
                 dangerouslySetInnerHTML={{ __html: this.state.historique }}
               />
             </table>

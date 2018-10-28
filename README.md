@@ -1,8 +1,17 @@
 ## Overview
+Tache : Faire une application simple avec React et la présenter au CTO comme s'il était un DSI client.
 
 ## Ameliorations qu'on peut ajouter
+Cahier des charges :
 
++ 2 champs de date et un bouton pour soumettre
++ Quand deux dates valides sont fournies, affichez en-dessous le nombre de jours entre ces deux dates
 
+## Ameliorations 
+- [Ajoutée] date fin est contenue dans l'intervale [date debut, )
+- [Ajoutée] une table d'historique, mais elle est volatile (suppression en rafraîchissant la page)
+- un checkbox Inclure le dernier jours dans le calcul (1 jour sera ajouté)
+- 
 
 
 -------------------------------------------------------------------------------------------------------------------------------
